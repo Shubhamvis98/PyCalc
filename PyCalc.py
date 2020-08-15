@@ -39,6 +39,8 @@ def calc():
             nums.set('Invalid Input')
 
 def back():
+    if nums.get() == 'Invalid Input':
+        nums.set('')
     nums.set(nums.get()[:-1])
 
 # FRAMES
