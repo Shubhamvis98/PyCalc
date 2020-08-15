@@ -1,4 +1,4 @@
 # PyCalc
 Python Calculator using tkinter library
 
-![alt text](https://i.imgur.com/dUqahZM.png)
+![Imgur](https://i.imgur.com/bUhgn0n.png)
