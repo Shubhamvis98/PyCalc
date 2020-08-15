@@ -3,8 +3,8 @@ from tkinter import messagebox as msg
 
 main = tk.Tk()
 main.title('Calculator')
-#main.iconbitmap('ICON\\PATH')
-main.geometry('265x225')
+#main.iconbitmap('ICON_PATH')
+main.geometry('265x240')
 main.resizable(0,0)
 
 
@@ -38,6 +38,9 @@ def calc():
         except:
             nums.set('Invalid Input')
 
+def back():
+    nums.set(nums.get()[:-1])
+
 # FRAMES
 frame1 = tk.Frame(master=main)
 frame2 = tk.Frame(master=main)
@@ -45,8 +48,9 @@ frame3 = tk.Frame(master=main)
 
 # DISPLAY
 nums = tk.StringVar()
-display = tk.Entry(master=frame1, textvariable=nums)
-display.pack(pady=10, padx=10, fill=tk.X, expand=True)
+display = tk.Entry(master=frame1,font=(10), textvariable=nums)
+display.config(state=tk.DISABLED)
+display.pack(pady=10, padx=10, fill=tk.X, ipady=5, expand=True)
 
 B_PADX = 2
 B_PADY = 2
@@ -72,8 +76,9 @@ btn_mul = tk.Button(master=frame2, text='*', width=5, height=2, command=lambda: 
 btn_sub = tk.Button(master=frame2, text='-', width=5, height=2, command=lambda: key('-')).grid(row=2, column=3, padx=B_PADX, pady=B_PADY)
 btn_add = tk.Button(master=frame2, text='+', width=5, height=2, command=lambda: key('+')).grid(row=2, column=4, padx=B_PADX, pady=B_PADY)
 
-btn_clr = tk.Button(master=main, text='CLR', width=12, height=2, command=clrscr).place(x=159, y=41)
-btn_eql = tk.Button(master=main, text='=', width=12, height=2, command=calc).place(x=159, y=176)
+btn_clr = tk.Button(master=frame2, text='<-', width=5, height=2, command=back).grid(row=0, column=3, padx=B_PADX, pady=B_PADY)
+btn_clr = tk.Button(master=frame2, text='CLR', width=5, height=2, command=clrscr).grid(row=0, column=4, padx=B_PADX, pady=B_PADY)
+btn_eql = tk.Button(master=frame3, text='=', width=12, height=2, command=calc).grid(row=0, column=2, padx=B_PADX, pady=B_PADY)
 
 # PACK FRAMES
 frame1.pack(fill=tk.X, side=tk.TOP)
